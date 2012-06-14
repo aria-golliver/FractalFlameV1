@@ -1,6 +1,11 @@
+// The cells that make up the histogram
+// 
+
 class HistogramCell {
-  float r, g, b;
-  long a;
+  float r = 0;
+  float g = 0;
+  float b = 0;
+  long a = 0;
 
   void hit(float r, float g, float b) {
     this.r += r;
