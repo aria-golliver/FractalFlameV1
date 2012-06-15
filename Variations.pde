@@ -2,9 +2,9 @@ Vec2 runVariations(Vec2 pos){
   Vec2 finalPos = new Vec2(pos.x, pos.y);
   
   int iterations = 0;
-  if(random(0,100) <= 1) iterations = 5
+  //if(random(0,100) <= 1) iterations = 5
   
-  int seed = random(0,100);
+  int seed = (int) random(0,100);
   if(seed <= 100) iterations = 2;
   if(seed <= 90) iterations = 3;
   if(seed <= 50) iterations = 4;

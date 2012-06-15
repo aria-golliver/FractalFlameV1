@@ -30,7 +30,7 @@ void draw() {
     //println(pos.x + " " + pos.y);
   }
 
-  for (int i = 0; i<20000000; i++) {  
+  for (int i = 0; i<20000; i++) {  
     pos = new Vec2(random(-1, 1), random(-1, 1));  // generation starts by picking a point in the bi-unit square
     pos = runVariations(pos);
     int x = (int)(pos.x * wid / 13 + wid/2);
