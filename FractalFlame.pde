@@ -79,13 +79,16 @@ void draw() {
         float color_scale_factor = log(a_avg)/logMaxA;
   
         int a = 0xFF;
-        int r = (int)((r_avg * color_scale_factor) * 0xFF);
-        int g = (int)((g_avg * color_scale_factor) * 0xFF);
-        int b = (int)((b_avg * color_scale_factor) * 0xFF);
-        if(y == hei/2)println(hex(g));
+        int r = (int)((r_avg * color_scale_factor) * 0xFF) & 0xFF;
+        int g = (int)((g_avg * color_scale_factor) * 0xFF) & 0xFF;
+        int b = (int)((b_avg * color_scale_factor) * 0xFF) & 0xFF;
+        //if(y == hei/2)println(hex(g));
         
         
         pixels[x + y * swid] = a << 24 | r << 16 | g << 8 | b;
+      } else {
+        pixels[x + y * swid] = 0xFF << 24 ;
+        
       }
     }
   }
