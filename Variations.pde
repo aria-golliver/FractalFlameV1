@@ -86,8 +86,8 @@ Vec2 v1f(Vec2 pos){
 }
 
 Vec2 v2(Vec2 pos){
-  float r = 1;
-  float g = 1;
+  float r = 0;
+  float g = 0;
   float b = 1;
   return(
     new Vec2(
@@ -99,9 +99,9 @@ Vec2 v2(Vec2 pos){
 }
 
 Vec2 v2f(Vec2 pos){
-  float r = 1;
+  float r = 0;
   float g = 1;
-  float b = 1;
+  float b = 0;
   return(
     new Vec2(
       1/pos.rsquared * pos.y,
