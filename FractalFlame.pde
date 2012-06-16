@@ -31,7 +31,7 @@ void draw() {
   }
 
   for (int i = 0; i<1600000; i++) {  
-    pos = new Vec2(random(-1, 1), random(-1, 1));  // generation starts by picking a point in the bi-unit square
+    pos = new Vec2(random(-1, 1), random(-1, 1), 0, 0, 0);  // generation starts by picking a point in the bi-unit square
     pos = runVariations(pos);
     int x = (int)(pos.x * wid / 13 + wid/2);
     int y = (int)(pos.y * hei / 13 + hei/2);
@@ -39,10 +39,54 @@ void draw() {
       y >= 0 &&
       x < wid &&
       y < hei) {
-      histogram[x][y].hit(/*0, 0, 0*/);
+      histogram[x][y].hit(pos.color_r, pos.color_g, pos.color_b);
     }
   }
+  
+  float maxA = 0;
+  float logMaxA = 0;
+  for (int x = 0; x < wid; x++) {
+    for (int y = 0; y < hei; y++) {
+      HistogramCell cell = histogram[x][y];
+      maxA = maxA > cell.a ? maxA : cell.a;
+    }
+  }
+  logMaxA = log(maxA);
+  
+  for (int x = 0; x<swid; x++) {
+    for (int y = 0; y<shei; y++) {
+      float a_avg = 0;
+      float r_avg = 0;
+      float g_avg = 0;
+      float b_avg = 0;
+      for (int xx = 0; xx<super_samples; xx++) {
+        for (int yy = 0; yy<super_samples; yy++) {
+          int current_x = x * super_samples + xx;
+          int current_y = y * super_samples + yy;
+          HistogramCell cell = histogram[current_x][current_y];
 
+          a_avg += cell.a;
+          r_avg += cell.r;
+          g_avg += cell.g;
+          b_avg += cell.b;
+        }
+      }
+      a_avg /= (float)(super_samples * super_samples);
+      r_avg /= (float)(super_samples * super_samples);
+      g_avg /= (float)(super_samples * super_samples);
+      b_avg /= (float)(super_samples * super_samples);
+      float color_scale_factor = log(a_avg)/logMaxA;
+      int a = 0xFF;
+      int r = (int)((r_avg * color_scale_factor) * 0xFF);
+      int g = (int)((r_avg * color_scale_factor) * 0xFF);
+      int b = (int)((r_avg * color_scale_factor) * 0xFF);
+      
+      
+      pixels[x + y * swid] = a << 24 | r << 16 | g << 8 | b;
+    }
+  }
+  
+  /*
   float maxA = 0;
   for (int x = 0; x < wid; x++) {
     for (int y = 0; y < hei; y++) {
@@ -74,6 +118,7 @@ void draw() {
       pixels[x + y * swid] = c | 0xFF << 24;
     }
   }
+  */
   //println(pos.x + " " + pos.y);
 
   updatePixels();

@@ -1,5 +1,5 @@
 
-int super_samples = 3;
+int super_samples = 1;
 
 
 
