@@ -6,9 +6,9 @@ Vec2 runVariations(Vec2 pos){
   
   int seed = (int) random(0,100);
   if(seed <= 100) iterations = 2;
-  if(seed <= 90) iterations = 3;
-  if(seed <= 50) iterations = 4;
-  if(seed <= 10) iterations = 5;
+  if(seed <= 40) iterations = 3;
+  if(seed <= 10) iterations = 4;
+  if(seed <= 1) iterations = 12;
   
   
   for(int i = 0; i<iterations; i++){
