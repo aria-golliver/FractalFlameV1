@@ -55,10 +55,11 @@ void draw() {
   
   for (int x = 0; x<swid; x++) {
     for (int y = 0; y<shei; y++) {
-      float a_avg = 0;
+      int a_avg = 0;
       float r_avg = 0;
       float g_avg = 0;
       float b_avg = 0;
+      
       for (int xx = 0; xx<super_samples; xx++) {
         for (int yy = 0; yy<super_samples; yy++) {
           int current_x = x * super_samples + xx;
@@ -75,14 +76,15 @@ void draw() {
       r_avg /= (float)(super_samples * super_samples);
       g_avg /= (float)(super_samples * super_samples);
       b_avg /= (float)(super_samples * super_samples);
+      
       if(a_avg > 0){
         float color_scale_factor = log(a_avg)/logMaxA;
   
         int a = 0xFF;
-        int r = (int)((r_avg * color_scale_factor) * 0xFF) & 0xFF;
-        int g = (int)((g_avg * color_scale_factor) * 0xFF) & 0xFF;
-        int b = (int)((b_avg * color_scale_factor) * 0xFF) & 0xFF;
-        //if(y == hei/2)println(hex(g));
+        int r = (int)((r_avg * color_scale_factor) * 0xFF);
+        int g = (int)((g_avg * color_scale_factor) * 0xFF);
+        int b = (int)((b_avg * color_scale_factor) * 0xFF);
+        if(y == shei/2)println(color_scale_factor);
         
         
         pixels[x + y * swid] = a << 24 | r << 16 | g << 8 | b;
