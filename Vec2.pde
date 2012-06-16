@@ -42,8 +42,8 @@ class Vec2 {
         this.x + b.x, 
         this.y + b.y,
         (this.color_r + b.color_r)/2,
-        (this.color_r + b.color_g)/2,
-        (this.color_r + b.color_b)/2));
+        (this.color_g + b.color_g)/2,
+        (this.color_b + b.color_b)/2));
   }
 
   Vec2 sub( Vec2 b ) {
