@@ -75,14 +75,18 @@ void draw() {
       r_avg /= (float)(super_samples * super_samples);
       g_avg /= (float)(super_samples * super_samples);
       b_avg /= (float)(super_samples * super_samples);
-      float color_scale_factor = log(a_avg)/logMaxA;
-      int a = 0xFF;
-      int r = (int)((r_avg * color_scale_factor) * 0xFF);
-      int g = (int)((g_avg * color_scale_factor) * 0xFF);
-      int b = (int)((b_avg * color_scale_factor) * 0xFF);
-      
-      
-      pixels[x + y * swid] = a << 24 | r << 16 | g << 8 | b;
+      if(a_avg > 0){
+        float color_scale_factor = log(a_avg)/logMaxA;
+  
+        int a = 0xFF;
+        int r = (int)((r_avg * color_scale_factor) * 0xFF);
+        int g = (int)((g_avg * color_scale_factor) * 0xFF);
+        int b = (int)((b_avg * color_scale_factor) * 0xFF);
+        if(y == hei/2)println(hex(g));
+        
+        
+        pixels[x + y * swid] = a << 24 | r << 16 | g << 8 | b;
+      }
     }
   }
   

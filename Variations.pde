@@ -47,8 +47,8 @@ Vec2 runVariations(Vec2 pos){
 }
 
 Vec2 v0(Vec2 pos){
-  float r = 1;
-  float g = 0;
+  float r = 0;
+  float g = 1;
   float b = 0;
   return(
     new Vec2(
@@ -62,7 +62,7 @@ Vec2 v0(Vec2 pos){
 Vec2 v1(Vec2 pos){
   float r = 1;
   float g = 0;
-  float b = 0;
+  float b = 1;
   return(
     new Vec2(
       sin(pos.x),
@@ -75,7 +75,7 @@ Vec2 v1(Vec2 pos){
 Vec2 v1f(Vec2 pos){
   float r = 1;
   float g = 0;
-  float b = 0;
+  float b = 1;
   return(
     new Vec2(
       cos(pos.y),
@@ -87,8 +87,8 @@ Vec2 v1f(Vec2 pos){
 
 Vec2 v2(Vec2 pos){
   float r = 1;
-  float g = 0;
-  float b = 0;
+  float g = 1;
+  float b = 1;
   return(
     new Vec2(
       1/pos.rsquared * pos.x,
@@ -100,8 +100,8 @@ Vec2 v2(Vec2 pos){
 
 Vec2 v2f(Vec2 pos){
   float r = 1;
-  float g = 0;
-  float b = 0;
+  float g = 1;
+  float b = 1;
   return(
     new Vec2(
       1/pos.rsquared * pos.y,
@@ -113,7 +113,7 @@ Vec2 v2f(Vec2 pos){
 
 Vec2 v3(Vec2 pos){
   float r = 1;
-  float g = 0;
+  float g = 1;
   float b = 0;
   return(
     new Vec2(
@@ -151,8 +151,8 @@ Vec2 v4(Vec2 pos){
 }
 
 Vec2 v5(Vec2 pos){
-  float r = 1;
-  float g = 0;
+  float r = 0;
+  float g = 1;
   float b = 0;
   return(
     new Vec2(
@@ -164,9 +164,9 @@ Vec2 v5(Vec2 pos){
 }
 
 Vec2 v6(Vec2 pos){
-  float r = 1;
+  float r = 0;
   float g = 0;
-  float b = 0;
+  float b = 1;
   return(
     new Vec2(
       pos.x + 1 * sin(tan(3 * pos.y)),
