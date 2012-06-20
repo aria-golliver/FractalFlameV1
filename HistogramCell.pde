@@ -2,9 +2,9 @@
 // 
 
 class HistogramCell {
-  float r = 1;
-  float g = 1;
-  float b = 1;
+  float r = 0;
+  float g = 0;
+  float b = 0;
   long  a = 0;
 
   void hit(float r, float g, float b) {
